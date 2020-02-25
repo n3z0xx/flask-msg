@@ -83,4 +83,4 @@ def auth():
         return {"ok": False}
 
 
-app.run(host="26.138.44.95")
+app.run(host="")
