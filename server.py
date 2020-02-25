@@ -3,7 +3,7 @@ from flask import Flask, request
 import datetime
 
 app = Flask(__name__)
-messages = []
+messages = [{"username": "", "text": "print '/exit' to stop", "time": time.time(), "isSystem": True}]
 users = {}
 
 
@@ -55,7 +55,7 @@ def send_view():
 
     text = data["text"]
     if not(data["isSystem"]):
-        messages.append({"username": username, "text": text, "time": time.time(), "isSystem": True})
+        messages.append({"username": username, "text": text, "time": time.time(), "isSystem": False})
     else:
         messages.append({"username": username, "text": text, "time": time.time(), "isSystem": True})
     return {"isOk": True}
@@ -83,4 +83,4 @@ def auth():
         return {"ok": False}
 
 
-app.run(host="")
+app.run(host=input("* Host: "))
